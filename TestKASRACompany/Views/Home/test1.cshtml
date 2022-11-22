@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "test1";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <p style="direction:rtl">
+  -1فرض کنید شما میخواهید یک سامانه برای کنترل تردد افراد یک کارخانه بنویسید.این افراد داری برنامه شیفتی منظم و
+غیر منظم هستند. جداول مورد نیاز را طراحی کنید.
+(جداول مربوط به عملیت ثبت لاگ را در نظر بگیرید)
+    </p>
+</div>
+
+
+<table class="table table-info table-striped caption-top mb-5 ">
+    <caption>
+        <h1>جدول  کاربری      </h1>
+
+    </caption>
+    <thead>
+        <tr>
+            <td>id or کد کاربری</td>
+            <td> نام و نام خانوادگی </td>
+            <td> تاریخ شروع کار </td>
+            <td> تاریخ پایان کار </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>23  </td>
+             <td>علی   </td>
+            <td>2022-05-17 8:00 </td>
+            <td>null </td>
+        </tr>
+        <tr>
+             <td>21  </td>
+            <td>نقی   </td>
+            <td>2021-01-12 8:00 </td>
+            <td>2022-12-29 16:00 </td>
+        </tr>
+        
+    </tbody>
+
+</table>
+
+<table class="table table-success table-striped caption-top mb-5 ">
+    <caption>
+        <h1>جدول شیفتی کاری      </h1>
+
+    </caption>
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>  زمان ورود</td>
+            <td>   زمان خروج   </td>
+            <td> تاریخ شروع کار </td>
+            <td> تاریخ پایان کار </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>8:00  </td>
+            <td>16:00 </td>
+             <td>2015-05-17 8:00 </td>
+            <td>null </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>16:00  </td>
+            <td>00:00 </td>
+             <td>2021-01-1 8:00 </td>
+            <td>null </td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+<table class="table table-info table-striped caption-top mb-5 ">
+     <caption>
+         <h1>جدول ثبت ورود و خروج </h1>
+
+     </caption>
+     <thead>
+         <tr>
+            <td>id</td>
+            <td>کد کاربری</td>
+            <td>تاریخ و ساعت ثبت </td>
+        </tr>
+     </thead>
+     <tbody>
+         <tr>
+            <td>1</td>
+            <td>23  </td>
+            <td>2022-12-12 8:00 </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>23  </td>
+            <td>2022-12-12 16:00 </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>22  </td>
+            <td>2022-12-12 8:00 </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>22  </td>
+            <td>2022-12-12 10:20 </td>
+        </tr>
+         <tr>
+            <td>5</td>
+            <td>22  </td>
+            <td>2022-12-12 12:00 </td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>22  </td>
+            <td>2022-12-12 16:00 </td>
+        </tr>
+        
+     </tbody>
+
+ </table>
+
+<table class="table table-success table-striped caption-top mb-5 ">
+    <caption>
+        <h1>جدول    تاریخ تعطیل سال   </h1>
+
+    </caption>
+    <thead>
+        <tr>
+            <td> کد</td>
+            <td>   تاریخ     </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1 </td>
+            <td>2022-11-04</td>
+        </tr>
+        <tr>
+            <td>2 </td>
+            <td>2022-11-17</td>
+        </tr>
+        <tr>
+            <td>3 </td>
+            <td>2022-11-20</td>
+        </tr>
+       
+
+    </tbody>
+
+</table>
+
+<table class="table table-info table-striped caption-top mb-5 ">
+    <caption>
+        <h1>جدول  محاسبه حضور ماهانه   </h1>
+
+    </caption>
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>کد کاربری</td>
+            <td>شماره سال  </td>
+            <td>شماره ماه  </td>
+            <td> مجموعه روز   حضور   </td>
+            <td> مجموعه  ساعت حضور   </td>
+           
+            <td> مجموعه روز   غیبت   </td>
+            <td> مجموعه  ساعت غیبت   </td>
+
+            <td> مجموعه  ساعت اضافه کاری   </td>
+            
+            <td> مجموعه روز  مرخصی   </td>
+            <td> مجموعه  ساعت مرخصی   </td>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>21  </td>
+            <td>  1400  </td>
+            <td>  11  </td>
+            <td> 23  </td>
+            <td> 2:23  </td>
+
+            <td> 3  </td>
+            <td> 01:30   </td>
+
+            <td> 3:50 </td>
+
+            <td> 2   </td>
+            <td>  01:30   </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<table class="table table-success table-striped caption-top mb-5 ">
+    <caption>
+        <h1>جدول  مرخصی     </h1>
+
+    </caption>
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>کد کاربری</td>
+            <td>  نوع مرخصی روزانه یا ساعتی  </td>
+            <td>    تاریخ و ساعت شروع    </td>
+            <td>    تاریخ و ساعت   پایان </td>
+   </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>21  </td>
+            <td>  نوع مرخصی روزانه      </td>
+            <td>   2022-08-12 8:00   </td>
+            <td>   2022-08-13 16:00  </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>21  </td>
+            <td>  نوع مرخصی ساعتی      </td>
+            <td>   2022-08-17 10:00   </td>
+            <td>   2022-08-17 13:00  </td>
+        </tr>
+    </tbody>
+
+</table>

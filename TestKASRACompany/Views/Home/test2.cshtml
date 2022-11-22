@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewData["Title"] = "test 2  ";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="row">
+    <p style="direction:rtl">
+        -2یک   RestApiبنویسید که وظیفه بازگرداندن دیتا در قالب  jsonرا دارد. این  Apiرا از درون  SQL Serverفراخوانی
+نمایید تا اطلاعات را درون جدوال ذخیره کنید   .
+    </p>
+
+    <div class="alert alert-info   m-2" role="alert">
+        <p class="mb-1 text-center"  style="direction:rtl">
+            در این قسمت  فقط کد مربوطه jsonو ذخیره ان  در بانک پیاده سازی شده اما لازم به اعتیارسنجی در  کلاینت و سرور  و طراحی ظاهر ان  می توانید یک نمونه پروژه ام انگولار12 و دانت نت پنج    <a href="https://arpango.ir/Contact-us">اینجا</a> ببینید .
+        </p>
+        <p>یک نمونه تست خودم برای dapper <a href="https://github.com/AliAsgharMoghanloo/RepTestDapperNet6">تمرین بوده</a></p>
+    </div>
+  </div>
+ 
+<div class="row">
+    <div class="col-md-4 mt-6  ">
+        <div class="border border-info rounded-2">
+            <form>
+                <h2>Create  product.</h2>
+                <input class="form-control" type="hidden" id="Id" name="Id">
+
+                <div class="form-floating m-1">
+                    <input class="form-control" type="text" id="Name" name="Name">
+                    <label for="Name">Name</label>
+                </div>
+                <div class="form-floating m-1">
+                    <input class="form-control  " type="number" id="CountP" name="CountP">
+                    <label for="CountP">CountP</label>
+                </div>
+                <div class="form-floating m-1">
+                    <input class="form-control" type="number" id="Price" name="Price">
+                    <label for="Price">Price</label>
+                </div>
+
+            </form>
+            <button onclick="add()" class="w-100 m-1 btn btn-lg btn-primary">add  product</button>
+
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-2 text-center">
+        <button onclick="getall()" class="w-100 m-1 btn btn-lg btn-primary">GetAll  product</button>
+        
+        <div id="tagloading" class="spinner-border text-info d-none m-4" role="status">
+            <span class="visually-hidden">Loading...</span>
+         </div>
+
+        <div     id="listproduct"  ></div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+        function Id() { return $('#Id').val(); }
+        function Name() { return $('#Name').val(); }
+        function CountP() { return $('#CountP').val(); }
+        function Price() { return $('#Price').val(); }
+        function SetModel(model) {
+            $('#Id').val(model.id);
+            $('#Name').val(model.name);
+            $('#CountP').val(model.countP);
+            $('#Price').val(model.price);
+        }
+      function getall() {
+            $('#tagloading').removeClass('d-none');
+
+            $.ajax(
+                { method: 'get', url: '/api/Testkasra/test2getall',
+                    error: function (e) { $('#tagloading').addClass('d-none'); }
+                }).then(function (res) {
+                //console.log('---getall--', res,  $('#listproduct'));
+                $('#tagloading').addClass('d-none');
+                $('#listproduct').html('');
+                res.forEach(x => {
+
+                    append(x);
+              })
+                
+            });
+       }
+        function append(x)
+        {
+            let ssd = `<div class="alert alert-success row row-cols-sm-2 m-2" role="alert">
+                                                  <p class="mb-1 text-center" > id:  ${x.id}      </p>
+                                                  <p class="mb-1 text-center"> name:   ${x.name}    </p>
+                                                  <p class="mb-1 text-center"> countP:  ${x.countP}  </p>
+                                                  <p class="mb-1 text-center"> price:  ${x.price}    </p>
+                                        </div >`;
+
+            //  console.log(ssd);
+            $('#listproduct').append(ssd);
+        }
+       function add() {
+            let data = {
+                Name: Name(),
+                CountP: CountP(),
+                Price: Price(),
+           };
+           // console.log('---Add--data--', data);
+            $.ajax({
+                method: 'post', url: '/api/Testkasra/test2add',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                error: function (request, status, error) {
+                    console.log('---request, status, error--', request, status, error);
+                     console.log(request.responseJSON.errors);
+                    //alert(request.responseText);
+                    alert(JSON.stringify( request.responseJSON.errors)); 
+                }
+            }).then(function (res) {
+                console.log('---add--', res);
+                append(res);
+            });
+       }
+ 
+    </script>
+
+}
+
+
+ 

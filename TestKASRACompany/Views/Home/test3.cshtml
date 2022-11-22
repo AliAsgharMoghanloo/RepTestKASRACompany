@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "  test 3";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col mt-6 ">
+        <pre>
+     3- Have the function BracketCombinations(num) read num which will be an integer greater than or
+      equal to zero, and return the number of valid combinations that can be formed with num pairs
+      of parentheses. For example, if the input is 3, then the possible combinations of 3 pairs of
+      parenthesis, namely: ()()(), are ()()(), ()(()), (())(), ((())), and (()()). There are 5 total combinations
+      when the input is 3, so your program should return 5.
+        Example : input : 3 ----- output : 5
+         Input: 2 ----- output : 2
+        </pre>
+        <div class="mx-auto col-sm-4 border border-info rounded-2">
+            
+            <div class="form-floating m-1">
+                <input class="form-control  " type="number" id="num" name="num">
+                <label for="num">num</label>
+            </div>
+            <button onclick="GetTest3()" class="w-100 m-1 btn btn-lg btn-primary">  GetTest3</button>
+            <div id="result"></div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script>
+        function getnum() { return $('#num').val(); }
+
+        function GetTest3() {
+
+            $.ajax({ method: 'get', url: '/api/Testkasra/GetTest3?num=' + getnum() }).then(function (res) {
+                console.log('---GetTest3--', res, $('#result'));
+
+                $('#result').html('');
+                 
+                let resdiv = `<div class="alert alert-success row row-cols-sm-2 m-2" role="alert">
+                                           <p class="mb-1 text-center" >  num :  ${getnum()}      </p>
+                                          <p class="mb-1 text-center"> result:   ${res}    </p>
+                                          </div >`;
+
+                 $('#result').append(resdiv);
+                
+
+            });
+        }
+
+       
+
+
+
+    </script>
+
+}
